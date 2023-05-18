@@ -32,7 +32,9 @@ class ProductViewController extends Controller
 
         $product_response = json_decode($product_requests->getBody(), true);
 
-        return $product_response;
+        $products = $product_response['data'];
+
+        return view('products', compact('products'));
 
     }
 }
