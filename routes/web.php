@@ -18,6 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller(ProductViewController::class)->prefix('products')->group(function(){
-    Route::get('/list', 'index')->name('api.products.index');
+Route::controller(ProductViewController::class)->group(function(){
+    Route::get('products/list', 'index')->name('api.products.index');
 });

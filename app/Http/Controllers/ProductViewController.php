@@ -20,6 +20,19 @@ class ProductViewController extends Controller
 
         $response = $request->getBody();
 
-        dd($response);
+        $info = json_decode($response, true);
+        
+        $token = $info['data']['token'];
+
+        $product_url = 'http://localhost:8000/api/products';
+
+        $product_requests = $client->get($product_url, [
+            'headers'=> ['Authorization' => 'Bearer ' .$token,]
+        ]);
+
+        $product_response = json_decode($product_requests->getBody(), true);
+
+        return $product_response;
+
     }
 }
