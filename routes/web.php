@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::controller(ProductViewController::class)->prefix('products')->group(function(){
+    Route::get('/list', 'index')->name('api.products.index');
+});
